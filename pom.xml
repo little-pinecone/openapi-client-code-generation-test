@@ -50,6 +50,13 @@
             <artifactId>dummy4j</artifactId>
             <version>${dummy4j.version}</version>
         </dependency>
+        <!-- Dependency for removing IntelliJ warning -->
+        <!-- https://youtrack.jetbrains.com/issue/IDEA-225445 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
         <!-- END of Utilities -->
     </dependencies>
 
