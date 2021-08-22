@@ -155,6 +155,8 @@
                                             Put generator-specific parameters here, e.g. for typescript-angular:
                                             <apiModulePrefix>Backend</apiModulePrefix>
                                          -->
+                                        <serviceSuffix>Client</serviceSuffix>
+                                        <serviceFileSuffix>.client</serviceFileSuffix>
                                     </configOptions>
                                 </configuration>
                             </execution>

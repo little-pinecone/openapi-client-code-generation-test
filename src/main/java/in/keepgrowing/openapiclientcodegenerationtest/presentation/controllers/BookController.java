@@ -3,6 +3,7 @@ package in.keepgrowing.openapiclientcodegenerationtest.presentation.controllers;
 import in.keepgrowing.openapiclientcodegenerationtest.domain.Book;
 import in.keepgrowing.openapiclientcodegenerationtest.domain.BookRepository;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "books", produces = MediaType.APPLICATION_JSON_VALUE)
+@Tag(name = "Books")
 public class BookController {
 
     private final BookRepository bookRepository;
