@@ -5,6 +5,21 @@
 This is a demo project to test how [springdoc-openapi](https://github.com/springdoc/springdoc-openapi) and 
 [openapi-generator-maven](https://openapi-generator.tech/docs/plugins#maven) plugins work in an example Spring Boot project.
 
+![GitHub](https://img.shields.io/github/license/little-pinecone/openapi-client-code-generation-test)
+
+- [Prerequisites](#prerequisites)
+- [Getting started](#getting-started)
+- [Profiles summary](#profiles-summary)
+    * [Spring profiles](#spring-profiles)
+    * [Maven profiles](#maven-profiles)
+- [API documentation](#api-documentation)
+    * [Swagger](#swagger)
+    * [OpenAPI](#openapi)
+- [Client code generation](#client-code-generation)
+    * [Compatibility](#compatibility)
+    * [Generating code](#generating-code)
+- [Built With](#built-with)
+
 ## Prerequisites
 
 * JDK 13+
@@ -56,8 +71,8 @@ The API specification is also available in the `yaml` format under the http://lo
 
 ### Compatibility
 
-Right now `openapi-generator` supports Angular 11.0.0. 
-Although the generated code works with Angular 12+, it's strongly recommended to update the generator plugin as soon as 
+Right now `openapi-generator` supports Angular 11.0.0.
+Although the generated code works with Angular 12+, it's strongly recommended to update the generator plugin as soon as
 it starts supporting Angular 12.0.0 (see [Issue #9511](https://github.com/OpenAPITools/openapi-generator/issues/9511)).
 
 ### Generating code
@@ -69,8 +84,8 @@ cd backend
 mvn clean verify -Pangular -DskipTests
 ```
 
-The application will be started so that the API specification can be obtained from the open api endpoint. 
-The generated code is available in the `/target/generated-sources/angular` directory. 
+The application will be started so that the API specification can be obtained from the open api endpoint.
+The generated code is available in the `/target/generated-sources/angular` directory.
 Don't edit files in this directory manually.
 
 ## Built With
@@ -80,3 +95,5 @@ Don't edit files in this directory manually.
 * [springdoc-openapi](https://springdoc.org/)
 * [OpenAPI Generator maven plugin](https://mvnrepository.com/artifact/org.openapitools/openapi-generator-maven-plugin)
 * [Dummy4j](https://daniel-frak.github.io/dummy4j/)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
