@@ -4,12 +4,12 @@ import in.keepgrowing.openapiclientcodegenerationtest.domain.Book;
 import in.keepgrowing.openapiclientcodegenerationtest.domain.BookRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "books", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -32,8 +32,8 @@ public class BookController {
 
     @GetMapping
     @Operation(description = "Find all stored books")
-    public ResponseEntity<List<Book>> findAll() {
-        return ResponseEntity.ok(bookRepository.findAll());
+    public ResponseEntity<Page<Book>> findAll(Pageable pageable) {
+        return ResponseEntity.ok(bookRepository.findAll(pageable));
     }
 
     @PostMapping

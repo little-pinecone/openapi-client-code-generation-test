@@ -3,37 +3,46 @@ package in.keepgrowing.openapiclientcodegenerationtest.infrastructure.repositori
 import in.keepgrowing.openapiclientcodegenerationtest.domain.Book;
 import in.keepgrowing.openapiclientcodegenerationtest.domain.BookRepository;
 import in.keepgrowing.openapiclientcodegenerationtest.infrastructure.datainit.DataInitializer;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class InMemoryBookRepository implements BookRepository {
 
-    private final List<Book> books;
+    private final SpringBookRepository springBookRepository;
 
-    public InMemoryBookRepository(DataInitializer dataInitializer) {
-        this.books = dataInitializer.initBooks();
+    public InMemoryBookRepository(DataInitializer dataInitializer,
+                                  SpringBookRepository springBookRepository) {
+        this.springBookRepository = springBookRepository;
+        initDatabase(dataInitializer);
+    }
+
+    private void initDatabase(DataInitializer dataInitializer) {
+        var books = dataInitializer.initBooks();
+        saveAll(books);
     }
 
     @Override
-    public List<Book> findAll() {
-        return new ArrayList<>(books);
+    public Page<Book> findAll(Pageable pageable) {
+        return springBookRepository.findAll(pageable);
     }
 
     @Override
     public Optional<Book> findById(Long id) {
-        return books.stream()
-                .filter(b -> b.getId().equals(id))
-                .findFirst();
+        return this.springBookRepository.findById(id);
     }
 
     @Override
     public Book save(Book book) {
-        books.add(book);
+        return this.springBookRepository.save(book);
+    }
 
-        return book;
+    @Override
+    public void saveAll(List<Book> books) {
+        this.springBookRepository.saveAll(books);
     }
 }
