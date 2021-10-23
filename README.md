@@ -42,15 +42,15 @@ mvn spring-boot:run
 
 ## Profiles summary
 
-The project can be built with various different profiles to allow for flexible configuration. Below you'll find a short summary of the available profiles.
-
-### Spring profiles
-
-* `angular` - used for client code generation. Applied automatically when the `angular` Maven profile is enabled.
+Below you'll find a short summary of the available profiles.
 
 ### Maven profiles
 
 * `angular` - for [generating client code](https://codesoapbox.dev/generate-client-code-from-spring-boot-using-maven/)
+
+### Spring profiles
+
+* `angular` - applied automatically when the `angular` Maven profile is enabled, required for setting up a proper host for the app during code generation
 
 ## API documentation
 
@@ -60,7 +60,7 @@ First, build and run the application. Then you'll be able to reach the API docs.
 
 The Swagger UI page: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html):
 
-![swagger screenshot](readme-images/swagger-screenshot.png)
+![swagger screenshot](readme-images/swagger-ui-screenshot.png)
 
 ### OpenAPI
 

@@ -23,7 +23,7 @@ public class BookController {
     }
 
     @GetMapping("{bookId}")
-    @Operation(summary = "Find book by id")
+    @Operation(summary = "Find a book by id")
     public ResponseEntity<Book> findById(@PathVariable Long bookId) {
         return bookRepository.findById(bookId)
                 .map(ResponseEntity::ok)
@@ -31,13 +31,13 @@ public class BookController {
     }
 
     @GetMapping
-    @Operation(description = "Find all stored books")
+    @Operation(summary = "Get paginated books")
     public ResponseEntity<Page<Book>> findAll(Pageable pageable) {
         return ResponseEntity.ok(bookRepository.findAll(pageable));
     }
 
     @PostMapping
-    @Operation(description = "Save a new book")
+    @Operation(summary = "Save a new book")
     public ResponseEntity<Book> save(@RequestBody Book book) {
         return ResponseEntity.ok(bookRepository.save(book));
     }
