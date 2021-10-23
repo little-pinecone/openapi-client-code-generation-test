@@ -4,11 +4,8 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.servers.Server;
-import org.springdoc.core.SpringDocUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.core.env.Environment;
 
 import java.util.Arrays;
@@ -50,14 +47,5 @@ public class SwaggerConfig {
         var server = new Server();
         server.setUrl("http://localhost:8080");
         return server;
-    }
-
-    /**
-     * Disable replacing Spring Boot Pageable to avoid breaking model while generating client code
-     * https://github.com/springdoc/springdoc-openapi/issues/1215#issuecomment-881049871
-     */
-    @EventListener(ContextRefreshedEvent.class)
-    public void contextRefreshedEvent() {
-        SpringDocUtils.getConfig().disableReplacement(org.springframework.data.domain.Pageable.class);
     }
 }

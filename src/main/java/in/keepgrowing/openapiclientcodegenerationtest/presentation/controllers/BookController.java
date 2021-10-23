@@ -3,9 +3,7 @@ package in.keepgrowing.openapiclientcodegenerationtest.presentation.controllers;
 import in.keepgrowing.openapiclientcodegenerationtest.domain.Book;
 import in.keepgrowing.openapiclientcodegenerationtest.domain.BookRepository;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springdoc.core.converters.models.PageableAsQueryParam;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -34,8 +32,7 @@ public class BookController {
 
     @GetMapping
     @Operation(description = "Find all stored books")
-    @PageableAsQueryParam
-    public ResponseEntity<Page<Book>> findAll(@Parameter(hidden = true) Pageable pageable) {
+    public ResponseEntity<Page<Book>> findAll(Pageable pageable) {
         return ResponseEntity.ok(bookRepository.findAll(pageable));
     }
 
