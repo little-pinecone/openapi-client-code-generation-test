@@ -80,7 +80,6 @@ it starts supporting Angular 12.0.0 (see [Issue #9511](https://github.com/OpenAP
 To run client code generation using the `openapi-generator-maven-plugin` execute the following command:
 
 ```shell
-cd backend
 mvn clean verify -Pangular -DskipTests
 ```
 
