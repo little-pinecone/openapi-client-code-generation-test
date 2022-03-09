@@ -71,9 +71,7 @@ The API specification is also available in the `yaml` format under the http://lo
 
 ### Compatibility
 
-Right now `openapi-generator` supports Angular 11.0.0.
-Although the generated code works with Angular 12+, it's strongly recommended to update the generator plugin as soon as
-it starts supporting Angular 12.0.0 (see [Issue #9511](https://github.com/OpenAPITools/openapi-generator/issues/9511)).
+`openapi-generator` v5.4.0 supports Angular 13.0.0.
 
 ### Generating code
 
