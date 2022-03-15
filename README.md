@@ -10,15 +10,15 @@ This is a demo project to test how [springdoc-openapi](https://github.com/spring
 - [Prerequisites](#prerequisites)
 - [Getting started](#getting-started)
 - [Profiles summary](#profiles-summary)
-    * [Spring profiles](#spring-profiles)
-    * [Maven profiles](#maven-profiles)
+  * [Maven profiles](#maven-profiles)
+  * [Spring profiles](#spring-profiles)
 - [API documentation](#api-documentation)
-    * [Swagger](#swagger)
-    * [OpenAPI](#openapi)
+  * [Swagger](#swagger)
+  * [OpenAPI](#openapi)
 - [Client code generation](#client-code-generation)
-    * [Compatibility](#compatibility)
-    * [Generating code](#generating-code)
-- [Built With](#built-with)
+  * [Compatibility](#compatibility)
+  * [Generating code](#generating-code)
+- [Additional features](#additional-features)
 
 ## Prerequisites
 
