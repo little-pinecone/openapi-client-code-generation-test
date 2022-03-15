@@ -85,7 +85,21 @@ The application will be started so that the API specification can be obtained fr
 The generated code is available in the `/target/generated-sources/angular` directory.
 Don't edit files in this directory manually.
 
-## Built With
+## Additional features
+
+Additionally, this project demonstrates example implementations for the following features:
+
+* [Pageable support](https://keepgrowing.in/java/springboot/add-pagination-to-a-spring-boot-app/)
+
+![pageable support](readme-images/pageable-support.png)
+
+* [Multipart request](https://github.com/swagger-api/swagger-ui/issues/6462#issuecomment-929189296)
+  
+![multipart request support](readme-images/multipart-support.png)
+
+---
+
+**Built With**
 
 * [Spring Boot v2.5+](https://spring.io/projects/spring-boot)
 * [Maven](https://maven.apache.org/)
