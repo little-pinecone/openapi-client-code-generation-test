@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping(value = "books", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -39,6 +40,15 @@ public class BookController {
     @PostMapping
     @Operation(summary = "Save a new book")
     public ResponseEntity<Book> save(@RequestBody Book book) {
+        return ResponseEntity.ok(bookRepository.save(book));
+    }
+
+    @PostMapping(path = "with-cover", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @Operation(summary = "Save a new book (and accept additional file to test multipart requests)")
+    public ResponseEntity<Book> saveWithCover(
+            @RequestPart Book book,
+            @RequestPart(value = "cover") MultipartFile file
+    ) {
         return ResponseEntity.ok(bookRepository.save(book));
     }
 }

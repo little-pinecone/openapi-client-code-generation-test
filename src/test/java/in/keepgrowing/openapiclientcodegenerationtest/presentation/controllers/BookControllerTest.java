@@ -11,16 +11,17 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.Optional;
 
 import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -102,6 +103,25 @@ class BookControllerTest {
         mvc.perform(post("/books")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(expectedResponse))
+                .andExpect(status().isOk())
+                .andExpect(content().json(expectedResponse));
+    }
+
+    @Test
+    void acceptMultipartRequest() throws Exception {
+        Book book = getBook();
+        String expectedResponse = objectMapper.writeValueAsString(book);
+        MockMultipartFile file = new MockMultipartFile("cover", "file.txt",
+                "text/plain", "test".getBytes());
+        MockMultipartFile requestBody = new MockMultipartFile("book", null,
+                "application/json", expectedResponse.getBytes(StandardCharsets.UTF_8));
+
+        when(bookRepository.save(book))
+                .thenReturn(book);
+
+        mvc.perform(multipart("/books/with-cover")
+                        .file(requestBody)
+                        .file(file))
                 .andExpect(status().isOk())
                 .andExpect(content().json(expectedResponse));
     }
